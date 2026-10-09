@@ -1,0 +1,16 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Public "I've been here" counters, one doc per place. No login:
+    // anyone may read, and a write may only move the count by exactly 1.
+    match /places/{placeId} {
+      allow read: if true;
+      allow create: if placeId.matches('^[a-z0-9-]{1,64}$')
+        && request.resource.data.keys().hasOnly(['count'])
+        && request.resource.data.count == 1;
+      allow update: if request.resource.data.keys().hasOnly(['count'])
+        && (request.resource.data.count == resource.data.count + 1
+          || (request.resource.data.count == resource.data.count - 1 && resource.data.count > 0));
+    }
+  }
+}

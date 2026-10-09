@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>ไกลบ้าน Atlas — FAROSE</title>
+  <meta name="description" content="แผนที่โลกสามมิติของทุกสถานที่ในรายการ ไกลบ้าน (FAROSE) EP1–150" />
+  <meta name="theme-color" content="#03050c" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://farose-fable.web.app/" />
+  <meta property="og:title" content="ไกลบ้าน Atlas — FAROSE" />
+  <meta property="og:description" content="หมุนโลกดูทุกสถานที่ของรายการไกลบ้าน 150 ตอน 28 ประเทศ แล้วปักหมุดที่ที่คุณเคยไป" />
+  <meta property="og:image" content="https://farose-fable.web.app/assets/og.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preload" href="assets/earth-night.webp" as="image" type="image/webp" crossorigin="anonymous" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Ccircle cx=%2216%22 cy=%2216%22 r=%2213%22 fill=%22%230a0e1c%22 stroke=%22%23ffcf6b%22 stroke-width=%222%22/%3E%3Ccircle cx=%2220%22 cy=%2212%22 r=%223%22 fill=%22%23ff7a8a%22/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@300;400;500;600&family=Bai+Jamjuree:wght@500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css?v=2" />
+</head>
+<body>
+  <div id="globe"></div>
+  <div class="vignette"></div>
+
+  <div id="loader">
+    <div class="loader-ring"></div>
+    <div class="loader-text">กำลังหมุนโลก…</div>
+  </div>
+
+  <!-- Left rail: brand, stats, search, lists -->
+  <aside id="rail" class="glass">
+    <header class="brand">
+      <div class="brand-kicker">FAROSE · ATLAS</div>
+      <h1>ไกลบ้าน</h1>
+      <p class="brand-sub">ทุกจุดหมายของ 150 ตอน บนโลกใบเดียว</p>
+    </header>
+
+    <div class="stats" id="stats"></div>
+    <div class="passport" id="passport" hidden></div>
+
+    <div class="search">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input id="q" type="search" placeholder="ค้นหาเมือง ประเทศ ชื่อตอน หรือ EP…" autocomplete="off" />
+    </div>
+
+    <div class="legend" id="legend"></div>
+
+    <div class="tabs" role="tablist">
+      <button role="tab" class="tab active" data-tab="places">สถานที่</button>
+      <button role="tab" class="tab" data-tab="episodes">ทุกตอน</button>
+    </div>
+    <div class="list" id="list"></div>
+  </aside>
+
+  <button id="railToggle" class="glass icon-btn" aria-label="เปิดรายการ">
+    <svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h10"/></svg>
+  </button>
+
+  <!-- Right: location detail -->
+  <section id="detail" class="glass" aria-hidden="true">
+    <button class="close" id="detailClose" aria-label="ปิด">×</button>
+    <div id="detailBody"></div>
+  </section>
+
+  <!-- Map controls -->
+  <div id="controls" class="glass">
+    <button class="ctl active" data-ctl="rotate" title="หมุนอัตโนมัติ">
+      <svg viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.3-5.7"/><path d="M20 4v5h-5"/></svg>
+    </button>
+    <button class="ctl" data-ctl="day" title="กลางวัน / กลางคืน">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+    </button>
+    <button class="ctl" data-ctl="home" title="มุมมองเริ่มต้น">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M4 12h16M12 4c2.5 2.5 2.5 13.5 0 16M12 4c-2.5 2.5-2.5 13.5 0 16"/></svg>
+    </button>
+  </div>
+
+  <!-- Bottom: timeline + journey -->
+  <footer id="timeline" class="glass">
+    <button id="play" class="play" aria-label="เล่นการเดินทาง">
+      <svg class="i-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+      <svg class="i-pause" viewBox="0 0 24 24"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg>
+    </button>
+    <div class="tl-main">
+      <div class="tl-head">
+        <span class="tl-label">ไทม์ไลน์การเดินทาง</span>
+        <span class="tl-now" id="tlNow">กด ▶ เพื่อออกเดินทางตั้งแต่ EP1</span>
+      </div>
+      <div class="ticks" id="ticks"></div>
+    </div>
+  </footer>
+
+  <div id="tickTip" class="tip"></div>
+
+  <!-- Video modal -->
+  <div id="modal" aria-hidden="true">
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-card">
+      <button class="close" data-close aria-label="ปิด">×</button>
+      <div class="frame"><iframe id="player" title="YouTube" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe></div>
+      <div class="modal-meta" id="modalMeta"></div>
+    </div>
+  </div>
+
+  <script src="vendor/globe.gl.min.js"></script>
+  <script src="data.js?v=2"></script>
+  <script src="app.js?v=2"></script>
+</body>
+</html>
