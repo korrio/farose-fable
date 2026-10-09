@@ -127,9 +127,11 @@
 index.html            หน้าเว็บ (หน้าเดียว)
 style.css             หน้าตาทั้งหมด
 app.js                ลูกโลก, แผงต่าง ๆ, ไทม์ไลน์, ฉันเคยไปที่นี่
+loader.js             แอนิเมชันโลโก้ไกลบ้านระหว่างโหลด
 data.js               ข้อมูลตอนและพิกัด (สร้างจากสคริปต์ ห้ามแก้มือ)
 vendor/globe.gl.min.js  globe.gl 2.46.1 (รวม three.js)
-assets/               ภาพพื้นผิวโลก (WebP), เส้นแบ่งประเทศ, ภาพแชร์
+vendor/lottie_light.min.js  lottie-web 5.13.0 สำหรับเล่นแอนิเมชันโลโก้
+assets/               ภาพพื้นผิวโลก (WebP), เส้นแบ่งประเทศ, ภาพแชร์, แอนิเมชันโลโก้ (Lottie)
 data/farose-gsheet.csv  ข้อมูลต้นทางจาก Google Sheet
 scripts/build_data.py สร้าง data.js จาก CSV พร้อมตารางพิกัด
 firestore.rules       กฎความปลอดภัยของตัวนับ "ฉันเคยไปที่นี่"
@@ -167,7 +169,7 @@ firebase deploy --only hosting         # เฉพาะเว็บ
 firebase deploy --only firestore:rules # เฉพาะกฎ
 ```
 
-เมื่อแก้ `app.js`, `style.css` หรือ `data.js` ให้เพิ่มเลข `?v=` ใน `index.html` ด้วย เพื่อให้ผู้ใช้ได้ไฟล์ใหม่ทันที
+ทุกไฟล์ส่ง header `Cache-Control: no-cache` (ตั้งใน `firebase.json`) เบราว์เซอร์จะถามเซิร์ฟเวอร์ก่อนใช้ไฟล์ที่เก็บไว้ทุกครั้ง หลัง deploy ผู้ใช้จึงได้ไฟล์ใหม่ทันทีโดยไม่ต้องแก้เลข `?v=`
 
 ## ตัวนับ "ฉันเคยไปที่นี่" ทำงานอย่างไร
 
@@ -182,11 +184,11 @@ firebase deploy --only firestore:rules # เฉพาะกฎ
 นำไปใช้ ดัดแปลง หรือเผยแพร่ต่อได้ฟรี รวมถึงใช้เชิงพาณิชย์ ขอแค่คงข้อความลิขสิทธิ์และสัญญาอนุญาตไว้
 
 **สิ่งที่ไม่อยู่ในสัญญาอนุญาตนี้**
-- คลิปวิดีโอ ภาพปก ชื่อตอน ชื่อรายการ และแบรนด์ **ไกลบ้าน (FAROSE)** เป็นลิขสิทธิ์ของเจ้าของรายการ
+- คลิปวิดีโอ ภาพปก ชื่อตอน ชื่อรายการ โลโก้ (รวมถึงแอนิเมชันโลโก้ตอนโหลด) และแบรนด์ **ไกลบ้าน (FAROSE)** เป็นลิขสิทธิ์ของเจ้าของรายการ
 - เว็บนี้แค่ลิงก์และฝังคลิปสาธารณะผ่าน YouTube เท่านั้น ไม่ได้ทำสำเนาคลิปใด ๆ
 
 **ส่วนประกอบจากภายนอก**
-- [globe.gl](https://github.com/vasturiano/globe.gl) และ [three.js](https://threejs.org) สัญญาอนุญาต MIT
+- [globe.gl](https://github.com/vasturiano/globe.gl), [three.js](https://threejs.org) และ [lottie-web](https://github.com/airbnb/lottie-web) สัญญาอนุญาต MIT
 - ภาพพื้นผิวโลกจาก NASA Blue Marble / Black Marble (สาธารณสมบัติ) ผ่านตัวอย่างของ three-globe
 - เส้นแบ่งประเทศจาก [Natural Earth](https://www.naturalearthdata.com) (สาธารณสมบัติ)
 

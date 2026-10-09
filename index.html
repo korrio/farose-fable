@@ -17,14 +17,14 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@300;400;500;600&family=Bai+Jamjuree:wght@500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=2" />
+  <link rel="stylesheet" href="style.css?v=3" />
 </head>
 <body>
   <div id="globe"></div>
   <div class="vignette"></div>
 
   <div id="loader">
-    <div class="loader-ring"></div>
+    <div class="loader-logo" id="loaderLogo" role="img" aria-label="ไกลบ้าน"></div>
     <div class="loader-text">กำลังหมุนโลก…</div>
   </div>
 
@@ -103,8 +103,10 @@
     </div>
   </div>
 
+  <script src="vendor/lottie_light.min.js"></script>
+  <script src="loader.js?v=3"></script>
   <script src="vendor/globe.gl.min.js"></script>
-  <script src="data.js?v=2"></script>
-  <script src="app.js?v=2"></script>
+  <script src="data.js?v=3"></script>
+  <script src="app.js?v=3"></script>
 </body>
 </html>

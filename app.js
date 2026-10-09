@@ -261,15 +261,17 @@
   layout();
 
   globe.pointOfView({ lat: HOME.lat, lng: HOME.lng, altitude: 3.6 });
+  let booted = false;
   const ready = () => {
-    if ($('#loader').classList.contains('done')) return;
-    $('#loader').classList.add('done');
+    if (booted) return;
+    booted = true;
     loadFans();
-    setTimeout(() => !state.sel && globe.pointOfView(HOME, 2600), 300);
+    // loader.js holds the curtain until the logo animation has landed
+    window.FAROSE_LOADER.done(() => setTimeout(() => !state.sel && globe.pointOfView(HOME, 2600), 300));
   };
   if (typeof globe.onGlobeReady === 'function') globe.onGlobeReady(ready);
   else setTimeout(ready, 1200);
-  setTimeout(() => $('#loader').classList.contains('done') || ready(), 6000);
+  setTimeout(ready, 6000);
 
   function refreshGlobe() {
     globe.pointColor(pointColor)

@@ -53,8 +53,10 @@ svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width:
   background: var(--bg); transition: opacity 1s ease, visibility 1s;
 }
 #loader.done { opacity: 0; visibility: hidden; }
-.loader-ring {
-  width: 56px; height: 56px; border-radius: 50%;
+.loader-logo { width: min(168px, 40vw); aspect-ratio: 418 / 492; display: grid; place-items: center; }
+/* if the Lottie can't load, fall back to a plain spinner */
+.loader-logo.fallback::before {
+  content: ""; width: 56px; height: 56px; border-radius: 50%;
   border: 2px solid rgba(255, 207, 107, 0.15); border-top-color: var(--gold);
   animation: spin 1s linear infinite;
 }

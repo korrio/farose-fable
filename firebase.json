@@ -5,11 +5,29 @@
   "hosting": {
     "site": "farose-fable",
     "public": ".",
-    "ignore": ["firebase.json", ".firebaserc", "firestore.rules", "README.md", "LICENSE", "NOTICE", "docs/**", "**/.*", "data/**", "scripts/**", "**/node_modules/**"],
+    "ignore": [
+      "firebase.json",
+      ".firebaserc",
+      "firestore.rules",
+      "README.md",
+      "LICENSE",
+      "NOTICE",
+      "docs/**",
+      "**/.*",
+      "data/**",
+      "scripts/**",
+      "**/node_modules/**"
+    ],
     "headers": [
-      { "source": "**/*.@(webp|jpg|png|geojson)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=2592000" }] },
-      { "source": "vendor/**", "headers": [{ "key": "Cache-Control", "value": "public, max-age=2592000" }] },
-      { "source": "**/*.@(js|css)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=600" }] }
+      {
+        "source": "**",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "no-cache"
+          }
+        ]
+      }
     ]
   }
 }
