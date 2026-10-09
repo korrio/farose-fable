@@ -1,0 +1,46 @@
+name: แก้ไข / เพิ่มตำแหน่งของตอน
+description: แจ้งสถานที่ที่ถูกต้องของตอนใดตอนหนึ่ง ไม่ต้องเขียนโค้ด
+title: "[ตำแหน่ง] EP"
+labels: ["location"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ขอบคุณที่ช่วยปักหมุดให้แม่นขึ้น 🙏 กรอกเท่าที่รู้ก็พอ ผู้ดูแลจะนำไปแก้ในข้อมูลให้
+  - type: input
+    id: ep
+    attributes:
+      label: ตอนที่ (EP)
+      placeholder: "เช่น 42"
+    validations:
+      required: true
+  - type: input
+    id: place
+    attributes:
+      label: สถานที่ที่ถูกต้อง
+      description: ชื่อเมืองหรือสถานที่ (ไทยหรืออังกฤษก็ได้)
+      placeholder: "เช่น Aarhus, Denmark หรือ ตลาด Torvehallerne โคเปนเฮเกน"
+    validations:
+      required: true
+  - type: input
+    id: maps
+    attributes:
+      label: ลิงก์ Google Maps (ถ้ามี)
+      description: เปิดสถานที่ใน Google Maps แล้วกดแชร์ คัดลอกลิงก์มาวาง
+      placeholder: "https://maps.app.goo.gl/..."
+  - type: textarea
+    id: evidence
+    attributes:
+      label: รู้ได้อย่างไร
+      description: เช่น นาทีในคลิปที่เห็นป้ายชื่อ หรือคำพูดในคลิป
+      placeholder: "นาที 3:25 มีป้ายชื่อสถานี..."
+    validations:
+      required: true
+  - type: dropdown
+    id: scope
+    attributes:
+      label: ทั้งตอนอยู่ที่เดียวไหม
+      options:
+        - ทั้งตอนอยู่ที่นี่
+        - ตอนนี้ไปหลายที่ (ระบุลำดับไว้ในช่องด้านบน)
+        - ไม่แน่ใจ
