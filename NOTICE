@@ -5,7 +5,7 @@ Licensed under the MIT License, see LICENSE.
 What this license does NOT cover
 -------------------------------------------------------------------------------
 
-The MIT license above applies to the code and the location data written for
+The MIT License in LICENSE applies to the code and the location data written for
 this project (index.html, style.css, app.js, scripts/, data.js, data/,
 firestore.rules and the coordinates in scripts/build_data.py).
 
