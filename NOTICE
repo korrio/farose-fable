@@ -1,0 +1,33 @@
+ไกลบ้าน Atlas (farose-fable) — notices
+Licensed under the MIT License, see LICENSE.
+
+-------------------------------------------------------------------------------
+What this license does NOT cover
+-------------------------------------------------------------------------------
+
+The MIT license above applies to the code and the location data written for
+this project (index.html, style.css, app.js, scripts/, data.js, data/,
+firestore.rules and the coordinates in scripts/build_data.py).
+
+It does not grant any rights to the content of the YouTube series
+"ไกลบ้าน" (FAROSE): the videos, thumbnails, episode titles, the show's name
+and branding remain the property of their respective owners. This project only
+links to and embeds the publicly available videos through YouTube.
+
+-------------------------------------------------------------------------------
+Third-party components
+-------------------------------------------------------------------------------
+
+vendor/globe.gl.min.js
+  globe.gl 2.46.1 — https://github.com/vasturiano/globe.gl
+  MIT License, Copyright (c) 2018 Vasco Asturiano
+  Bundles three.js — https://threejs.org
+  MIT License, Copyright (c) 2010-2024 three.js authors
+
+assets/earth-*.webp, assets/night-sky.webp
+  Earth textures from NASA Blue Marble / Black Marble imagery (public domain),
+  as distributed in the three-globe examples (MIT, Vasco Asturiano).
+
+assets/countries.geojson
+  Natural Earth 1:110m Admin 0 countries (public domain),
+  https://www.naturalearthdata.com

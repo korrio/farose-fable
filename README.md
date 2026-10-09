@@ -136,7 +136,7 @@ firestore.rules       กฎความปลอดภัยของตัว�
 firebase.json         ตั้งค่า Firebase Hosting
 docs/screenshots/     ภาพประกอบ README
 .github/ISSUE_TEMPLATE/  แบบฟอร์มแจ้งตำแหน่ง
-LICENSE               สัญญาอนุญาต
+LICENSE, NOTICE       สัญญาอนุญาต และสิ่งที่ไม่อยู่ในสัญญาอนุญาต
 ```
 
 ไม่มีขั้นตอน build และไม่ต้องติดตั้ง npm ไลบรารีทั้งหมดอยู่ในโปรเจกต์แล้ว (ยกเว้นฟอนต์จาก Google Fonts และ Firebase SDK ที่โหลดทีหลังจาก gstatic)
@@ -190,4 +190,4 @@ firebase deploy --only firestore:rules # เฉพาะกฎ
 - ภาพพื้นผิวโลกจาก NASA Blue Marble / Black Marble (สาธารณสมบัติ) ผ่านตัวอย่างของ three-globe
 - เส้นแบ่งประเทศจาก [Natural Earth](https://www.naturalearthdata.com) (สาธารณสมบัติ)
 
-รายละเอียดเต็มอยู่ในไฟล์ [LICENSE](LICENSE)
+ข้อความสัญญาอนุญาตอยู่ในไฟล์ [LICENSE](LICENSE) และรายละเอียดส่วนที่ยกเว้นกับส่วนประกอบจากภายนอกอยู่ในไฟล์ [NOTICE](NOTICE)
