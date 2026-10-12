@@ -26,6 +26,10 @@ C = {  # city / region / country anchors
  'Naples':(40.8518,14.2681),'Seoul':(37.5665,126.9780),'Hiroshima':(34.3853,132.4553),
  'Cambridge, Massachusetts':(42.3736,-71.1097),'Prague':(50.0755,14.4378),'Yangon':(16.8409,96.1735),
  'Hainan':(19.2000,109.7000),'Disneyland Paris':(48.8722,2.7758),'Florence':(43.7696,11.2558),
+ 'Mannheim':(49.4875,8.4660),'Bordeaux':(44.8378,-0.5792),'Amsterdam':(52.3676,4.9041),
+ 'North Cascades National Park':(48.7718,-121.2985),'Helsinki':(60.1699,24.9384),
+ 'Shanghai':(31.2304,121.4737),'Istanbul':(41.0082,28.9784),'Brussels':(50.8503,4.3517),
+ 'Boston':(42.3601,-71.0589),'Busan':(35.1796,129.0756),
  # country centroids (city unverified)
  'Germany':(51.1657,10.4515),'Spain':(40.4637,-3.7492),'United States':(39.8283,-98.5795),
  'Denmark':(56.2639,9.5018),'England':(52.3555,-1.1743),'United Kingdom':(54.0,-2.5),
@@ -74,6 +78,9 @@ TH = {
  'Yokohama':'โยโกฮามา','Cambridge':'เคมบริดจ์','Naples':'เนเปิลส์','Seoul':'โซล',
  'Hiroshima':'ฮิโรชิมา','Cambridge, Massachusetts':'ฮาร์วาร์ด เคมบริดจ์','Prague':'ปราก',
  'Yangon':'ย่างกุ้ง','Hainan':'ไหหลำ','Disneyland Paris':'ดิสนีย์แลนด์ปารีส','Florence':'ฟลอเรนซ์',
+ 'Mannheim':'มันไฮม์','Bordeaux':'บอร์โดซ์','Amsterdam':'อัมสเตอร์ดัม',
+ 'North Cascades National Park':'อุทยานนอร์ทแคสเคดส์','Helsinki':'เฮลซิงกิ','Shanghai':'เซี่ยงไฮ้',
+ 'Istanbul':'อิสตันบูล','Brussels':'บรัสเซลส์','Boston':'บอสตัน','Busan':'ปูซาน',
  'Germany':'เยอรมนี','Spain':'สเปน','United States':'สหรัฐอเมริกา','Denmark':'เดนมาร์ก',
  'England':'อังกฤษ','United Kingdom':'สหราชอาณาจักร','Australia':'ออสเตรเลีย','Italy':'อิตาลี',
  'Finland':'ฟินแลนด์','Europe':'ยุโรป',
@@ -94,6 +101,8 @@ CTRY = {
  'Hong Kong':('ฮ่องกง','HK','HKG','Asia'),'Portugal':('โปรตุเกส','PT','PRT','Europe'),
  'South Korea':('เกาหลีใต้','KR','KOR','Asia'),'Finland':('ฟินแลนด์','FI','FIN','Europe'),
  'Czech Republic':('เช็กเกีย','CZ','CZE','Europe'),'Myanmar':('เมียนมา','MM','MMR','Asia'),
+ 'Netherlands':('เนเธอร์แลนด์','NL','NLD','Europe'),'Belgium':('เบลเยียม','BE','BEL','Europe'),
+ 'Turkey':('ตุรกี','TR','TUR','Europe'),
 }
 STOP_COUNTRY = {'Paris':'France','Strasbourg':'France','Munich':'Germany','Vienna':'Austria',
  'Copenhagen':'Denmark','Tokyo':'Japan','Kyoto':'Japan','Nagoya':'Japan'}

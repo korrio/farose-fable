@@ -177,7 +177,7 @@
   }
 
   fetch('assets/countries.geojson').then(r => r.json()).then(geo => {
-    const feats = geo.features.filter(f => f.properties.ADM0_A3 !== 'ATA');
+    const feats = geo.features.filter(f => f.properties.ADM0_A3 !== 'ATA').flatMap(splitOverseas);
     globe
       .polygonsData(feats)
       .polygonGeoJsonGeometry('geometry')
@@ -205,6 +205,16 @@
       })
       .polygonsTransitionDuration(600);
   });
+  // Natural Earth files French Guiana under France, so it would light up in South
+  // America as "visited" with France's episode count. Give it its own outline.
+  function splitOverseas(f) {
+    if (f.properties.ADM0_A3 !== 'FRA' || f.geometry.type !== 'MultiPolygon') return [f];
+    const overseas = poly => poly[0][0][0] < -30;
+    return [
+      { ...f, geometry: { type: 'MultiPolygon', coordinates: f.geometry.coordinates.filter(p => !overseas(p)) } },
+      { type: 'Feature', properties: { ADM0_A3: 'GUF' }, geometry: { type: 'MultiPolygon', coordinates: f.geometry.coordinates.filter(overseas) } },
+    ];
+  }
   function contOfA3(f) {
     const name = Object.keys(CTRY).find(k => CTRY[k].a3 === f.properties.ADM0_A3);
     return CONT[CTRY[name]?.cont || 'Europe'].color;
